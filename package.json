@@ -1,0 +1,23 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderOviolMartinez/my-docker-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderOviolMartinez/my-docker-app/issues"
+  },
+  "homepage": "https://github.com/AlexanderOviolMartinez/my-docker-app#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
