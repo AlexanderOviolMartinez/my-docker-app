@@ -1,0 +1,26 @@
+name: Auto-Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Falls dein Hauptbranch anders heißt, ändere ihn hier
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Repository klonen
+      uses: actions/checkout@v3
+
+    - name: Mit EC2 verbinden und Deploy ausführen
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: root  # Falls du 'ubuntu' oder einen anderen User nutzt, ändere das hier
+        key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+        script: |
+          cd /root/myproject
+          git pull origin main
+          docker compose down || docker stop myproject && docker rm myproject  # Stoppe Container, falls nötig
+          docker compose up -d --build
